@@ -1,31 +1,18 @@
 {
-    "theme_color": "#63dcfb",
-    "background_color": "#63dcfb",
-    "display": "standalone",
-    "scope": "/",
-    "start_url": "/",
-    "name": "Ellyphant",
-    "short_name": "elly",
-    "icons": [
-        {
-            "src": "/icon-192x192.png",
-            "sizes": "192x192",
-            "type": "image/png"
-        },
-        {
-            "src": "/icon-256x256.png",
-            "sizes": "256x256",
-            "type": "image/png"
-        },
-        {
-            "src": "/icon-384x384.png",
-            "sizes": "384x384",
-            "type": "image/png"
-        },
-        {
-            "src": "/icon-512x512.png",
-            "sizes": "512x512",
-            "type": "image/png"
-        }
-    ]
+  "$schema": "https://json.schemastore.org/web-manifest-combined.json",
+  "name": "Elly Lin",
+  "short_name": "Elly",
+  "start_url": ".",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "https://github.com/ellyphant/ellyphant.github.io/blob/master/icon-256x256.png?raw=true",
+      "sizes": "256x256",
+      "type": "image/png"
+    }
+
+  ],
+  "background_color": "#fff",
+  "description": "",
+  "related_applications": []
 }
