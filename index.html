@@ -2,9 +2,15 @@
 <html lang="en">
 <head>
 <title>Title</title>
-<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js?v=151515" async></script>
+<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>
 <link rel="manifest" href="manifest.json"/>
   
+</head>
+  
+<body>
+
+<div class='onesignal-customlink-container'></div>
+I love OneSignal!! 
 <script>
   window.OneSignal = window.OneSignal || [];
   OneSignal.push(function() {
@@ -13,11 +19,6 @@
     });
   });
 </script>
-</head>
-  
-<body>
-<div class='onesignal-customlink-container'></div>
-I love OneSignal!! 
 </body>
   
 </html>
