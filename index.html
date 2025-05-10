@@ -9,7 +9,6 @@
             --pastel-blue: #A8D8EA;
             --pastel-pink: #FFCAD4;
             --pastel-green: #C5E0B4;
-            --pastel-yellow: #F8ED86;
             --pastel-purple: #D0BDF4;
             --text-primary: #333;
             --text-secondary: #666;
@@ -21,7 +20,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         }
 
         body {
@@ -35,73 +34,6 @@
             padding: 2rem;
             text-align: center;
             position: relative;
-            overflow: hidden;
-        }
-
-        .geometric-shapes {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            opacity: 0.3;
-        }
-
-        .shape {
-            position: absolute;
-            background-color: rgba(255, 255, 255, 0.6);
-            border-radius: 50%;
-            animation: float 15s infinite ease-in-out;
-        }
-
-        .shape:nth-child(1) {
-            width: 80px;
-            height: 80px;
-            top: 10%;
-            left: 10%;
-            animation-delay: 0s;
-        }
-
-        .shape:nth-child(2) {
-            width: 60px;
-            height: 60px;
-            top: 30%;
-            left: 80%;
-            animation-delay: 2s;
-        }
-
-        .shape:nth-child(3) {
-            width: 100px;
-            height: 100px;
-            top: 70%;
-            left: 30%;
-            animation-delay: 4s;
-        }
-
-        .shape:nth-child(4) {
-            width: 50px;
-            height: 50px;
-            top: 50%;
-            left: 60%;
-            animation-delay: 6s;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(0) translateX(0);
-            }
-            50% {
-                transform: translateY(-20px) translateX(15px);
-            }
-            100% {
-                transform: translateY(0) translateX(0);
-            }
-        }
-
-        .profile-content {
-            position: relative;
-            z-index: 1;
         }
 
         header h1 {
@@ -149,21 +81,6 @@
             color: var(--pastel-purple);
         }
 
-        nav a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 3px;
-            bottom: 0;
-            left: 0;
-            background-color: var(--pastel-purple);
-            transition: width 0.3s;
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
         section {
             padding: 4rem 2rem;
         }
@@ -192,6 +109,88 @@
             left: 50%;
             transform: translateX(-50%);
             background-color: var(--pastel-blue);
+        }
+
+        .hero-section {
+            padding: 5rem 2rem;
+            background-color: rgba(208, 189, 244, 0.1);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-image {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            height: 100%;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .hero-content {
+            padding: 1rem 0;
+        }
+
+        .hero-content h2 {
+            text-align: left;
+            transform: none;
+            left: 0;
+            margin-bottom: 1.5rem;
+            font-size: 2.4rem;
+        }
+
+        .hero-content h2::after {
+            left: 0;
+            transform: none;
+        }
+
+        .hero-content p {
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .career-links {
+            margin-top: 2rem;
+        }
+
+        .career-link {
+            display: inline-block;
+            margin-right: 1.5rem;
+            margin-bottom: 1rem;
+            text-decoration: none;
+            color: white;
+            background-color: var(--pastel-purple);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .career-link:hover {
+            transform: translateY(-5px);
+        }
+
+        .career-link.pm {
+            background-color: var(--pastel-blue);
+        }
+
+        .career-link.re {
+            background-color: var(--pastel-pink);
+        }
+
+        .career-link.cc {
+            background-color: var(--pastel-green);
         }
 
         .category-section {
@@ -277,33 +276,6 @@
             font-size: 0.95rem;
         }
 
-        .project-content .tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .tag {
-            background-color: var(--pastel-blue);
-            color: var(--text-primary);
-            font-size: 0.75rem;
-            padding: 0.25rem 0.75rem;
-            border-radius: 50px;
-        }
-
-        #product-management .tag {
-            background-color: var(--pastel-blue);
-        }
-
-        #real-estate .tag {
-            background-color: var(--pastel-pink);
-        }
-
-        #content-creation .tag {
-            background-color: var(--pastel-green);
-        }
-
         .project-link {
             display: inline-block;
             margin-top: 0.5rem;
@@ -317,75 +289,9 @@
             opacity: 0.8;
         }
 
-        #about {
-            padding: 6rem 2rem;
+        .contact-section {
+            padding: 4rem 2rem;
             background-color: rgba(208, 189, 244, 0.1);
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-image {
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: var(--card-shadow);
-        }
-
-        .about-image img {
-            width: 100%;
-            display: block;
-        }
-
-        .about-content h2 {
-            text-align: left;
-            transform: none;
-            left: 0;
-            margin-bottom: 1.5rem;
-        }
-
-        .about-content h2::after {
-            left: 0;
-            transform: none;
-        }
-
-        .about-content p {
-            margin-bottom: 1.5rem;
-            color: var(--text-secondary);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .social-link {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: var(--pastel-purple);
-            color: white;
-            text-decoration: none;
-            font-size: 1.2rem;
-            transition: transform 0.3s, background-color 0.3s;
-        }
-
-        .social-link:hover {
-            transform: translateY(-5px);
-            background-color: var(--pastel-blue);
-        }
-
-        footer {
-            background-color: var(--text-primary);
-            color: white;
-            padding: 2rem;
-            text-align: center;
         }
 
         .contact-form {
@@ -440,17 +346,34 @@
         }
 
         .btn:hover {
-            background-color: var(--pastel-blue);
             transform: translateY(-3px);
         }
 
+        footer {
+            background-color: var(--text-primary);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
         @media (max-width: 768px) {
-            header h1 {
-                font-size: 2.2rem;
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
             }
             
-            header p {
-                font-size: 1rem;
+            .hero-content h2,
+            .hero-content p {
+                text-align: center;
+            }
+            
+            .hero-content h2::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .career-links {
+                text-align: center;
             }
             
             nav ul {
@@ -463,11 +386,6 @@
                 margin: 0.5rem 0;
             }
             
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
             .projects-grid {
                 grid-template-columns: 1fr;
             }
@@ -476,27 +394,45 @@
 </head>
 <body>
     <header>
-        <div class="geometric-shapes">
-            <div class="shape"></div>
-            <div class="shape"></div>
-            <div class="shape"></div>
-            <div class="shape"></div>
-        </div>
-        <div class="profile-content">
-            <h1>Your Name</h1>
-            <p>Product Manager | Real Estate Agent | Content Creator</p>
-        </div>
+        <h1>Your Name</h1>
+        <p>Product Manager | Real Estate Agent | Content Creator</p>
     </header>
     
     <nav>
         <ul>
+            <li><a href="#about">About Me</a></li>
             <li><a href="#product-management">Product Management</a></li>
             <li><a href="#real-estate">Real Estate</a></li>
             <li><a href="#content-creation">Content Creation</a></li>
-            <li><a href="#about">About Me</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
+    
+    <section id="about" class="hero-section">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-image">
+                    <img src="https://via.placeholder.com/600x800" alt="Your Profile Picture">
+                </div>
+                <div class="hero-content">
+                    <h2>About Me</h2>
+                    <p>Hello! I'm <strong>Your Name</strong>, a multifaceted professional with expertise spanning product management, real estate, and content creation. I bring a unique perspective that blends technical knowledge, market insights, and creative storytelling.</p>
+                    
+                    <p>With my background in technology and business, I've developed a passion for creating products that solve real problems, helping people find their perfect homes, and sharing valuable content with audiences across multiple platforms.</p>
+                    
+                    <p>I currently work with innovative companies to develop user-centered products, assist clients in navigating the complex real estate market, and create engaging content that educates and entertains.</p>
+                    
+                    <p>Learn more about my professional journey in each of these areas:</p>
+                    
+                    <div class="career-links">
+                        <a href="product-management.html" class="career-link pm">Product Management</a>
+                        <a href="real-estate.html" class="career-link re">Real Estate</a>
+                        <a href="content-creation.html" class="career-link cc">Content Creation</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     
     <section id="product-management" class="category-section">
         <div class="container">
@@ -508,49 +444,34 @@
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="/api/placeholder/600/400" alt="Product Management Project 1">
+                        <img src="https://via.placeholder.com/600x400" alt="Product Management Project 1">
                     </div>
                     <div class="project-content">
                         <h3>Project Title 1</h3>
                         <p>A brief description of the project, highlighting your role, challenges, and the impact of your contributions.</p>
-                        <div class="tags">
-                            <span class="tag">UX Research</span>
-                            <span class="tag">Agile</span>
-                            <span class="tag">SaaS</span>
-                        </div>
-                        <a href="#" class="project-link">View Case Study →</a>
+                        <a href="product-management.html" class="project-link">View Case Study →</a>
                     </div>
                 </div>
                 
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="/api/placeholder/600/400" alt="Product Management Project 2">
+                        <img src="https://via.placeholder.com/600x400" alt="Product Management Project 2">
                     </div>
                     <div class="project-content">
                         <h3>Project Title 2</h3>
                         <p>A brief description of the project, highlighting your role, challenges, and the impact of your contributions.</p>
-                        <div class="tags">
-                            <span class="tag">Strategy</span>
-                            <span class="tag">Mobile App</span>
-                            <span class="tag">Analytics</span>
-                        </div>
-                        <a href="#" class="project-link">View Case Study →</a>
+                        <a href="product-management.html" class="project-link">View Case Study →</a>
                     </div>
                 </div>
                 
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="/api/placeholder/600/400" alt="Product Management Project 3">
+                        <img src="https://via.placeholder.com/600x400" alt="Product Management Project 3">
                     </div>
                     <div class="project-content">
                         <h3>Project Title 3</h3>
                         <p>A brief description of the project, highlighting your role, challenges, and the impact of your contributions.</p>
-                        <div class="tags">
-                            <span class="tag">Roadmap</span>
-                            <span class="tag">B2B</span>
-                            <span class="tag">User Testing</span>
-                        </div>
-                        <a href="#" class="project-link">View Case Study →</a>
+                        <a href="product-management.html" class="project-link">View Case Study →</a>
                     </div>
                 </div>
             </div>
@@ -567,49 +488,34 @@
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="/api/placeholder/600/400" alt="Real Estate Listing 1">
+                        <img src="https://via.placeholder.com/600x400" alt="Real Estate Listing 1">
                     </div>
                     <div class="project-content">
                         <h3>Luxury Apartment Complex</h3>
                         <p>Successfully managed the sale of a 20-unit luxury apartment complex, exceeding target price by 15%.</p>
-                        <div class="tags">
-                            <span class="tag">Luxury</span>
-                            <span class="tag">Commercial</span>
-                            <span class="tag">Investment</span>
-                        </div>
-                        <a href="#" class="project-link">View Property →</a>
+                        <a href="real-estate.html" class="project-link">View Property →</a>
                     </div>
                 </div>
                 
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="/api/placeholder/600/400" alt="Real Estate Listing 2">
+                        <img src="https://via.placeholder.com/600x400" alt="Real Estate Listing 2">
                     </div>
                     <div class="project-content">
                         <h3>Waterfront Home</h3>
                         <p>Marketed and sold this stunning waterfront property within 3 weeks, achieving full asking price.</p>
-                        <div class="tags">
-                            <span class="tag">Waterfront</span>
-                            <span class="tag">Luxury</span>
-                            <span class="tag">Residential</span>
-                        </div>
-                        <a href="#" class="project-link">View Property →</a>
+                        <a href="real-estate.html" class="project-link">View Property →</a>
                     </div>
                 </div>
                 
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="/api/placeholder/600/400" alt="Real Estate Listing 3">
+                        <img src="https://via.placeholder.com/600x400" alt="Real Estate Listing 3">
                     </div>
                     <div class="project-content">
                         <h3>Urban Development Project</h3>
                         <p>Coordinated the pre-sale marketing for this mixed-use development, selling 80% of units before construction.</p>
-                        <div class="tags">
-                            <span class="tag">Development</span>
-                            <span class="tag">Pre-Construction</span>
-                            <span class="tag">Urban</span>
-                        </div>
-                        <a href="#" class="project-link">View Project →</a>
+                        <a href="real-estate.html" class="project-link">View Project →</a>
                     </div>
                 </div>
             </div>
@@ -626,89 +532,41 @@
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="/api/placeholder/600/400" alt="Content Project 1">
+                        <img src="https://via.placeholder.com/600x400" alt="Content Project 1">
                     </div>
                     <div class="project-content">
                         <h3>YouTube Channel</h3>
                         <p>Educational tech review channel with over 50K subscribers and 2M total views, focused on product reviews and tutorials.</p>
-                        <div class="tags">
-                            <span class="tag">YouTube</span>
-                            <span class="tag">Tech Reviews</span>
-                            <span class="tag">Tutorials</span>
-                        </div>
-                        <a href="#" class="project-link">Visit Channel →</a>
+                        <a href="content-creation.html" class="project-link">Visit Channel →</a>
                     </div>
                 </div>
                 
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="/api/placeholder/600/400" alt="Content Project 2">
+                        <img src="https://via.placeholder.com/600x400" alt="Content Project 2">
                     </div>
                     <div class="project-content">
                         <h3>Podcast Series</h3>
                         <p>Weekly podcast interviewing industry leaders about technology trends and product management insights.</p>
-                        <div class="tags">
-                            <span class="tag">Podcast</span>
-                            <span class="tag">Interviews</span>
-                            <span class="tag">Industry Insights</span>
-                        </div>
-                        <a href="#" class="project-link">Listen Now →</a>
+                        <a href="content-creation.html" class="project-link">Listen Now →</a>
                     </div>
                 </div>
                 
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="/api/placeholder/600/400" alt="Content Project 3">
+                        <img src="https://via.placeholder.com/600x400" alt="Content Project 3">
                     </div>
                     <div class="project-content">
                         <h3>Real Estate Blog</h3>
                         <p>Market analysis and investment tips blog with 15K monthly readers, focusing on helping first-time buyers.</p>
-                        <div class="tags">
-                            <span class="tag">Blog</span>
-                            <span class="tag">Real Estate</span>
-                            <span class="tag">Market Analysis</span>
-                        </div>
-                        <a href="#" class="project-link">Read Articles →</a>
+                        <a href="content-creation.html" class="project-link">Read Articles →</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
     
-    <section id="about">
-        <div class="container">
-            <div class="about-grid">
-                <div class="about-image">
-                    <img src="/api/placeholder/600/800" alt="Your Profile Picture">
-                </div>
-                <div class="about-content">
-                    <h2>About Me</h2>
-                    <p>Hello! I'm [Your Name], a multifaceted professional with expertise spanning product management, real estate, and content creation. With over [X] years of experience, I've developed a unique perspective that blends technical knowledge, market insights, and creative storytelling.</p>
-                    <p>As a product manager, I specialize in [specific area], having led the development of products that serve [target audience] and solve [specific problems]. My approach emphasizes user-centered design and data-driven decision-making.</p>
-                    <p>In real estate, I focus on [market/property type] and have helped [number] clients find their dream homes or investment properties. I pride myself on my market knowledge and negotiation skills.</p>
-                    <p>My content creation spans [platforms/media types], where I share insights on [topics] and have built a community of [size] engaged followers.</p>
-                    <p>When I'm not working, you can find me [hobbies/interests], which help me maintain balance and bring fresh perspectives to my professional endeavors.</p>
-                    
-                    <div class="social-links">
-                        <a href="#" class="social-link">
-                            <i>in</i>
-                        </a>
-                        <a href="#" class="social-link">
-                            <i>tw</i>
-                        </a>
-                        <a href="#" class="social-link">
-                            <i>ig</i>
-                        </a>
-                        <a href="#" class="social-link">
-                            <i>yt</i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <section id="contact">
+    <section id="contact" class="contact-section">
         <div class="container">
             <h2>Get In Touch</h2>
             <div class="contact-form">
