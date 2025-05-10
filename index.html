@@ -1,24 +1,754 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Title</title>
-<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" defer></script>
-<link rel="manifest" href="manifest.json"/>
-  
-</head>
-  
-<body>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Portfolio</title>
+    <style>
+        :root {
+            --pastel-blue: #A8D8EA;
+            --pastel-pink: #FFCAD4;
+            --pastel-green: #C5E0B4;
+            --pastel-yellow: #F8ED86;
+            --pastel-purple: #D0BDF4;
+            --text-primary: #333;
+            --text-secondary: #666;
+            --background: #fff;
+            --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
 
-<div class='onesignal-customlink-container'></div>
-I love OneSignal!
-<script>
-  window.OneSignal = window.OneSignal || [];
-  OneSignal.push(function() {
-    OneSignal.init({
-      appId: "305964ee-f979-4054-83e7-4c2096f2b0b4",
-    });
-  });
-</script>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(to right, var(--pastel-blue), var(--pastel-purple));
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .geometric-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.3;
+        }
+
+        .shape {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        .shape:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            width: 60px;
+            height: 60px;
+            top: 30%;
+            left: 80%;
+            animation-delay: 2s;
+        }
+
+        .shape:nth-child(3) {
+            width: 100px;
+            height: 100px;
+            top: 70%;
+            left: 30%;
+            animation-delay: 4s;
+        }
+
+        .shape:nth-child(4) {
+            width: 50px;
+            height: 50px;
+            top: 50%;
+            left: 60%;
+            animation-delay: 6s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) translateX(0);
+            }
+            50% {
+                transform: translateY(-20px) translateX(15px);
+            }
+            100% {
+                transform: translateY(0) translateX(0);
+            }
+        }
+
+        .profile-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        nav {
+            background-color: white;
+            box-shadow: var(--card-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 1rem 0;
+        }
+
+        nav li {
+            margin: 0 1.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--pastel-purple);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--pastel-purple);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        section {
+            padding: 4rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 4px;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--pastel-blue);
+        }
+
+        .category-section {
+            padding: 4rem 2rem;
+        }
+
+        #product-management {
+            background-color: rgba(168, 216, 234, 0.15);
+        }
+
+        #real-estate {
+            background-color: rgba(255, 202, 212, 0.15);
+        }
+
+        #content-creation {
+            background-color: rgba(197, 224, 180, 0.15);
+        }
+
+        .category-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .category-header h2 {
+            font-size: 2.2rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .category-header p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-image {
+            height: 200px;
+            background-color: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-content p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .project-content .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            background-color: var(--pastel-blue);
+            color: var(--text-primary);
+            font-size: 0.75rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+        }
+
+        #product-management .tag {
+            background-color: var(--pastel-blue);
+        }
+
+        #real-estate .tag {
+            background-color: var(--pastel-pink);
+        }
+
+        #content-creation .tag {
+            background-color: var(--pastel-green);
+        }
+
+        .project-link {
+            display: inline-block;
+            margin-top: 0.5rem;
+            text-decoration: none;
+            color: var(--pastel-purple);
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .project-link:hover {
+            opacity: 0.8;
+        }
+
+        #about {
+            padding: 6rem 2rem;
+            background-color: rgba(208, 189, 244, 0.1);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+        }
+
+        .about-image img {
+            width: 100%;
+            display: block;
+        }
+
+        .about-content h2 {
+            text-align: left;
+            transform: none;
+            left: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content h2::after {
+            left: 0;
+            transform: none;
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--pastel-purple);
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px);
+            background-color: var(--pastel-blue);
+        }
+
+        footer {
+            background-color: var(--text-primary);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--pastel-purple);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--pastel-purple);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--pastel-blue);
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            header p {
+                font-size: 1rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                padding: 0.5rem 0;
+            }
+            
+            nav li {
+                margin: 0.5rem 0;
+            }
+            
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="geometric-shapes">
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+        <div class="profile-content">
+            <h1>Your Name</h1>
+            <p>Product Manager | Real Estate Agent | Content Creator</p>
+        </div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#product-management">Product Management</a></li>
+            <li><a href="#real-estate">Real Estate</a></li>
+            <li><a href="#content-creation">Content Creation</a></li>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <section id="product-management" class="category-section">
+        <div class="container">
+            <div class="category-header">
+                <h2>Product Management</h2>
+                <p>Leading digital product development with a user-centered approach and data-driven decision making.</p>
+            </div>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="/api/placeholder/600/400" alt="Product Management Project 1">
+                    </div>
+                    <div class="project-content">
+                        <h3>Project Title 1</h3>
+                        <p>A brief description of the project, highlighting your role, challenges, and the impact of your contributions.</p>
+                        <div class="tags">
+                            <span class="tag">UX Research</span>
+                            <span class="tag">Agile</span>
+                            <span class="tag">SaaS</span>
+                        </div>
+                        <a href="#" class="project-link">View Case Study →</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="/api/placeholder/600/400" alt="Product Management Project 2">
+                    </div>
+                    <div class="project-content">
+                        <h3>Project Title 2</h3>
+                        <p>A brief description of the project, highlighting your role, challenges, and the impact of your contributions.</p>
+                        <div class="tags">
+                            <span class="tag">Strategy</span>
+                            <span class="tag">Mobile App</span>
+                            <span class="tag">Analytics</span>
+                        </div>
+                        <a href="#" class="project-link">View Case Study →</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="/api/placeholder/600/400" alt="Product Management Project 3">
+                    </div>
+                    <div class="project-content">
+                        <h3>Project Title 3</h3>
+                        <p>A brief description of the project, highlighting your role, challenges, and the impact of your contributions.</p>
+                        <div class="tags">
+                            <span class="tag">Roadmap</span>
+                            <span class="tag">B2B</span>
+                            <span class="tag">User Testing</span>
+                        </div>
+                        <a href="#" class="project-link">View Case Study →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="real-estate" class="category-section">
+        <div class="container">
+            <div class="category-header">
+                <h2>Real Estate</h2>
+                <p>Helping clients find their dream properties and maximize property investments with market expertise.</p>
+            </div>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="/api/placeholder/600/400" alt="Real Estate Listing 1">
+                    </div>
+                    <div class="project-content">
+                        <h3>Luxury Apartment Complex</h3>
+                        <p>Successfully managed the sale of a 20-unit luxury apartment complex, exceeding target price by 15%.</p>
+                        <div class="tags">
+                            <span class="tag">Luxury</span>
+                            <span class="tag">Commercial</span>
+                            <span class="tag">Investment</span>
+                        </div>
+                        <a href="#" class="project-link">View Property →</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="/api/placeholder/600/400" alt="Real Estate Listing 2">
+                    </div>
+                    <div class="project-content">
+                        <h3>Waterfront Home</h3>
+                        <p>Marketed and sold this stunning waterfront property within 3 weeks, achieving full asking price.</p>
+                        <div class="tags">
+                            <span class="tag">Waterfront</span>
+                            <span class="tag">Luxury</span>
+                            <span class="tag">Residential</span>
+                        </div>
+                        <a href="#" class="project-link">View Property →</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="/api/placeholder/600/400" alt="Real Estate Listing 3">
+                    </div>
+                    <div class="project-content">
+                        <h3>Urban Development Project</h3>
+                        <p>Coordinated the pre-sale marketing for this mixed-use development, selling 80% of units before construction.</p>
+                        <div class="tags">
+                            <span class="tag">Development</span>
+                            <span class="tag">Pre-Construction</span>
+                            <span class="tag">Urban</span>
+                        </div>
+                        <a href="#" class="project-link">View Project →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="content-creation" class="category-section">
+        <div class="container">
+            <div class="category-header">
+                <h2>Content Creation</h2>
+                <p>Creating engaging digital content across multiple platforms with a focus on value and audience growth.</p>
+            </div>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="/api/placeholder/600/400" alt="Content Project 1">
+                    </div>
+                    <div class="project-content">
+                        <h3>YouTube Channel</h3>
+                        <p>Educational tech review channel with over 50K subscribers and 2M total views, focused on product reviews and tutorials.</p>
+                        <div class="tags">
+                            <span class="tag">YouTube</span>
+                            <span class="tag">Tech Reviews</span>
+                            <span class="tag">Tutorials</span>
+                        </div>
+                        <a href="#" class="project-link">Visit Channel →</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="/api/placeholder/600/400" alt="Content Project 2">
+                    </div>
+                    <div class="project-content">
+                        <h3>Podcast Series</h3>
+                        <p>Weekly podcast interviewing industry leaders about technology trends and product management insights.</p>
+                        <div class="tags">
+                            <span class="tag">Podcast</span>
+                            <span class="tag">Interviews</span>
+                            <span class="tag">Industry Insights</span>
+                        </div>
+                        <a href="#" class="project-link">Listen Now →</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="/api/placeholder/600/400" alt="Content Project 3">
+                    </div>
+                    <div class="project-content">
+                        <h3>Real Estate Blog</h3>
+                        <p>Market analysis and investment tips blog with 15K monthly readers, focusing on helping first-time buyers.</p>
+                        <div class="tags">
+                            <span class="tag">Blog</span>
+                            <span class="tag">Real Estate</span>
+                            <span class="tag">Market Analysis</span>
+                        </div>
+                        <a href="#" class="project-link">Read Articles →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image">
+                    <img src="/api/placeholder/600/800" alt="Your Profile Picture">
+                </div>
+                <div class="about-content">
+                    <h2>About Me</h2>
+                    <p>Hello! I'm [Your Name], a multifaceted professional with expertise spanning product management, real estate, and content creation. With over [X] years of experience, I've developed a unique perspective that blends technical knowledge, market insights, and creative storytelling.</p>
+                    <p>As a product manager, I specialize in [specific area], having led the development of products that serve [target audience] and solve [specific problems]. My approach emphasizes user-centered design and data-driven decision-making.</p>
+                    <p>In real estate, I focus on [market/property type] and have helped [number] clients find their dream homes or investment properties. I pride myself on my market knowledge and negotiation skills.</p>
+                    <p>My content creation spans [platforms/media types], where I share insights on [topics] and have built a community of [size] engaged followers.</p>
+                    <p>When I'm not working, you can find me [hobbies/interests], which help me maintain balance and bring fresh perspectives to my professional endeavors.</p>
+                    
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i>in</i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i>tw</i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i>ig</i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i>yt</i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <div class="contact-form">
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" class="form-control" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 Your Name. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Simple script to enable smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
-  
 </html>
