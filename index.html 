@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elly Lin</title>
+    <title>Elly</title>
+    <link rel="icon" href="Profile Pic.png" type="image/png">
+    <!-- Font Awesome for social media icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
             --pastel-blue: #A8D8EA;
@@ -294,59 +297,60 @@
             background-color: rgba(208, 189, 244, 0.1);
         }
 
-        .contact-form {
+        .social-container {
             max-width: 600px;
             margin: 0 auto;
             background-color: white;
             padding: 2rem;
             border-radius: 12px;
             box-shadow: var(--card-shadow);
+            text-align: center;
         }
 
-        .form-group {
-            margin-bottom: 1.5rem;
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
         }
 
-        .form-group label {
-            display: block;
+        .social-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: transform 0.3s;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-5px);
+        }
+
+        .social-icon i {
+            font-size: 2.5rem;
             margin-bottom: 0.5rem;
+        }
+
+        .social-icon.instagram i {
+            color: #C13584;
+        }
+
+        .social-icon.linkedin i {
+            color: #0077B5;
+        }
+
+        .social-icon.email i {
+            color: var(--pastel-purple);
+        }
+
+        .social-icon.tiktok i {
+            color: #000000;
+        }
+
+        .social-icon span {
+            font-size: 0.9rem;
             font-weight: 500;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: var(--pastel-purple);
-        }
-
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: var(--pastel-purple);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border: none;
-            border-radius: 6px;
-            font-size: 1rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
         }
 
         footer {
@@ -389,6 +393,11 @@
             .projects-grid {
                 grid-template-columns: 1fr;
             }
+
+            .social-icons {
+                flex-wrap: wrap;
+                gap: 1.5rem;
+            }
         }
     </style>
 </head>
@@ -404,7 +413,7 @@
             <li><a href="#product-management">Product Management</a></li>
             <li><a href="#real-estate">Real Estate</a></li>
             <li><a href="#content-creation">Content Creation</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#contact">Connect</a></li>
         </ul>
     </nav>
     
@@ -412,7 +421,7 @@
         <div class="container">
             <div class="hero-grid">
                 <div class="hero-image">
-                    <img src="Profile Pic.png" alt="Your Profile Picture">
+                    <img src="Profile Pic.png" alt="Elly's Profile Picture">
                 </div>
                 <div class="hero-content">
                     <h2>Hi, I'm Elly</h2>
@@ -568,33 +577,33 @@
     
     <section id="contact" class="contact-section">
         <div class="container">
-            <h2>Get In Touch</h2>
-            <div class="contact-form">
-                <form action="#" method="POST">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <input type="text" id="subject" name="subject" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" class="form-control" required></textarea>
-                    </div>
-                    <button type="submit" class="btn">Send Message</button>
-                </form>
+            <h2>Connect With Me</h2>
+            <div class="social-container">
+                <p>Feel free to reach out through any of these platforms:</p>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/elllyphant" target="_blank" class="social-icon instagram">
+                        <i class="fab fa-instagram"></i>
+                        <span>Instagram</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/ellylin/" target="_blank" class="social-icon linkedin">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="mailto:linelly3@gmail.com" class="social-icon email">
+                        <i class="fas fa-envelope"></i>
+                        <span>Email</span>
+                    </a>
+                    <a href="https://www.tiktok.com/@ieattoomunch" target="_blank" class="social-icon tiktok">
+                        <i class="fab fa-tiktok"></i>
+                        <span>TikTok</span>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
     
     <footer>
-        <p>&copy; 2025 Your Name. All Rights Reserved.</p>
+        <p>&copy; 2025 Elly Lin. All Rights Reserved.</p>
     </footer>
 
     <script>
