@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elly</title>
+    <link rel="icon" href="Profile Pic.png" type="image/png">
+    <!-- Font Awesome for social media icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --pastel-blue: #A8D8EA;
+            --pastel-pink: #FFCAD4;
+            --pastel-green: #C5E0B4;
+            --pastel-purple: #D0BDF4;
+            --text-primary: #333;
+            --text-secondary: #666;
+            --background: #fff;
+            --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(to right, var(--pastel-blue), var(--pastel-purple));
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        nav {
+            background-color: white;
+            box-shadow: var(--card-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 1rem 0;
+        }
+
+        nav li {
+            margin: 0 1.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--pastel-purple);
+        }
+
+        section {
+            padding: 4rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 4px;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--pastel-blue);
+        }
+
+        .hero-section {
+            padding: 5rem 2rem;
+            background-color: rgba(208, 189, 244, 0.1);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-image {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            height: 100%;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .hero-content {
+            padding: 1rem 0;
+        }
+
+        .hero-content h2 {
+            text-align: left;
+            transform: none;
+            left: 0;
+            margin-bottom: 1.5rem;
+            font-size: 2.4rem;
+        }
+
+        .hero-content h2::after {
+            left: 0;
+            transform: none;
+        }
+
+        .hero-content p {
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .career-links {
+            margin-top: 2rem;
+        }
+
+        .career-link {
+            display: inline-block;
+            margin-right: 1.5rem;
+            margin-bottom: 1rem;
+            text-decoration: none;
+            color: white;
+            background-color: var(--pastel-purple);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .career-link:hover {
+            transform: translateY(-5px);
+        }
+
+        .career-link.pm {
+            background-color: var(--pastel-blue);
+        }
+
+        .career-link.re {
+            background-color: var(--pastel-pink);
+        }
+
+        .career-link.cc {
+            background-color: var(--pastel-green);
+        }
+
+        .category-section {
+            padding: 4rem 2rem;
+        }
+
+        #product-management {
+            background-color: rgba(168, 216, 234, 0.15);
+        }
+
+        #real-estate {
+            background-color: rgba(255, 202, 212, 0.15);
+        }
+
+        #content-creation {
+            background-color: rgba(197, 224, 180, 0.15);
+        }
+
+        .category-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .category-header h2 {
+            font-size: 2.2rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .category-header p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-image {
+            height: 200px;
+            background-color: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-content p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .project-link {
+            display: inline-block;
+            margin-top: 0.5rem;
+            text-decoration: none;
+            color: var(--pastel-purple);
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .project-link:hover {
+            opacity: 0.8;
+        }
+
+        .contact-section {
+            padding: 4rem 2rem;
+            background-color: rgba(208, 189, 244, 0.1);
+        }
+
+        .social-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            text-align: center;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: transform 0.3s;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-5px);
+        }
+
+        .social-icon i {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .social-icon.instagram i {
+            color: #C13584;
+        }
+
+        .social-icon.linkedin i {
+            color: #0077B5;
+        }
+
+        .social-icon.email i {
+            color: var(--pastel-purple);
+        }
+
+        .social-icon.tiktok i {
+            color: #000000;
+        }
+
+        .social-icon span {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        footer {
+            background-color: var(--text-primary);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .hero-content h2,
+            .hero-content p {
+                text-align: center;
+            }
+            
+            .hero-content h2::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .career-links {
+                text-align: center;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                padding: 0.5rem 0;
+            }
+            
+            nav li {
+                margin: 0.5rem 0;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .social-icons {
+                flex-wrap: wrap;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🛠️ PAGE UNDER CONSTRUCTION 🛠️</h1>
+        <p>Product Manager | Real Estate Agent | Content Creator</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#product-management">Product Management</a></li>
+            <li><a href="#real-estate">Real Estate</a></li>
+            <li><a href="#content-creation">Content Creation</a></li>
+            <li><a href="#contact">Connect</a></li>
+        </ul>
+    </nav>
+    
+    <section id="about" class="hero-section">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-image">
+                    <img src="Profile Pic.png" alt="Elly's Profile Picture">
+                </div>
+                <div class="hero-content">
+                    <h2>Hi, I'm Elly</h2>
+                    <p>Hello! I'm <strong>Elly</strong>, a multifaceted professional with expertise spanning product management, real estate, and content creation. I bring a unique perspective that blends technical knowledge, market insights, and creative storytelling.</p>
+                    
+                    <p>With my background in technology, I've developed a passion for creating products that solve real problems, helping people find their perfect homes, and sharing valuable content with audiences across multiple platforms.</p>
+                    
+                    <p>I currently work with innovative companies to develop user-centered products, assist clients in navigating the complex real estate market, and create engaging content that educates and entertains.</p>
+                    
+                    <p>Learn more about my professional journey in each of these areas:</p>
+                    
+                    <div class="career-links">
+                        <a href="product-management.html" class="career-link pm">Product Management</a>
+                        <a href="real-estate.html" class="career-link re">Real Estate</a>
+                        <a href="content-creation.html" class="career-link cc">Content Creation</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="product-management" class="category-section">
+        <div class="container">
+            <div class="category-header">
+                <h2>Product Management</h2>
+                <p>Leading digital product development with a user-centered approach and data-driven decision making.</p>
+            </div>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/600x400" alt="Product Management Project 1">
+                    </div>
+                    <div class="project-content">
+                        <h3>Project Title 1</h3>
+                        <p>A brief description of the project, highlighting your role, challenges, and the impact of your contributions.</p>
+                        <a href="product-management.html" class="project-link">View Case Study →</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/600x400" alt="Product Management Project 2">
+                    </div>
+                    <div class="project-content">
+                        <h3>Project Title 2</h3>
+                        <p>A brief description of the project, highlighting your role, challenges, and the impact of your contributions.</p>
+                        <a href="product-management.html" class="project-link">View Case Study →</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/600x400" alt="Product Management Project 3">
+                    </div>
+                    <div class="project-content">
+                        <h3>Project Title 3</h3>
+                        <p>A brief description of the project, highlighting your role, challenges, and the impact of your contributions.</p>
+                        <a href="product-management.html" class="project-link">View Case Study →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="real-estate" class="category-section">
+        <div class="container">
+            <div class="category-header">
+                <h2>Real Estate</h2>
+                <p>Helping clients find their dream properties and maximize property investments with market expertise.</p>
+            </div>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/600x400" alt="Real Estate Listing 1">
+                    </div>
+                    <div class="project-content">
+                        <h3>Luxury Apartment Complex</h3>
+                        <p>Successfully managed the sale of a 20-unit luxury apartment complex, exceeding target price by 15%.</p>
+                        <a href="real-estate.html" class="project-link">View Property →</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/600x400" alt="Real Estate Listing 2">
+                    </div>
+                    <div class="project-content">
+                        <h3>Waterfront Home</h3>
+                        <p>Marketed and sold this stunning waterfront property within 3 weeks, achieving full asking price.</p>
+                        <a href="real-estate.html" class="project-link">View Property →</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/600x400" alt="Real Estate Listing 3">
+                    </div>
+                    <div class="project-content">
+                        <h3>Urban Development Project</h3>
+                        <p>Coordinated the pre-sale marketing for this mixed-use development, selling 80% of units before construction.</p>
+                        <a href="real-estate.html" class="project-link">View Project →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="content-creation" class="category-section">
+        <div class="container">
+            <div class="category-header">
+                <h2>Content Creation</h2>
+                <p>Creating engaging digital content across multiple platforms with a focus on value and audience growth.</p>
+            </div>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/600x400" alt="Content Project 1">
+                    </div>
+                    <div class="project-content">
+                        <h3>YouTube Channel</h3>
+                        <p>Educational tech review channel with over 50K subscribers and 2M total views, focused on product reviews and tutorials.</p>
+                        <a href="content-creation.html" class="project-link">Visit Channel →</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/600x400" alt="Content Project 2">
+                    </div>
+                    <div class="project-content">
+                        <h3>Podcast Series</h3>
+                        <p>Weekly podcast interviewing industry leaders about technology trends and product management insights.</p>
+                        <a href="content-creation.html" class="project-link">Listen Now →</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/600x400" alt="Content Project 3">
+                    </div>
+                    <div class="project-content">
+                        <h3>Real Estate Blog</h3>
+                        <p>Market analysis and investment tips blog with 15K monthly readers, focusing on helping first-time buyers.</p>
+                        <a href="content-creation.html" class="project-link">Read Articles →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2>Connect With Me</h2>
+            <div class="social-container">
+                <p>Feel free to reach out through any of these platforms:</p>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/elllyphant" target="_blank" class="social-icon instagram">
+                        <i class="fab fa-instagram"></i>
+                        <span>Instagram</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/ellylin/" target="_blank" class="social-icon linkedin">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="mailto:linelly3@gmail.com" class="social-icon email">
+                        <i class="fas fa-envelope"></i>
+                        <span>Email</span>
+                    </a>
+                    <a href="https://www.tiktok.com/@ieattoomunch" target="_blank" class="social-icon tiktok">
+                        <i class="fab fa-tiktok"></i>
+                        <span>TikTok</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 Elly Lin. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Simple script to enable smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
